@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Logger } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
 interface CorrectLessonMessage {
@@ -17,11 +17,17 @@ interface CorrectLessonResponse {
 
 @Controller()
 export class AppController {
+  private readonly logger = new Logger(AppController.name);
+
   @MessagePattern('challenge.correction')
   correctLesson(
     @Payload() message: CorrectLessonMessage,
   ): CorrectLessonResponse {
     const { submissionId, repositoryUrl } = message.value;
+
+    this.logger.log(
+      `Correcting submission ${submissionId} with repository ${repositoryUrl}`,
+    );
 
     return {
       submissionId,

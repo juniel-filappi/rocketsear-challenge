@@ -2,12 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""challenge"""
 type Challenge {
   id: ID!
   title: String!
   description: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """
@@ -20,5 +20,10 @@ type Query {
 }
 
 type Mutation {
-  createChallenge(title: String!): Challenge!
+  createChallenge(data: CreateChallengeInput!): Challenge!
+}
+
+input CreateChallengeInput {
+  title: String!
+  description: String!
 }

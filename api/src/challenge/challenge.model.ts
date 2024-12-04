@@ -1,16 +1,19 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
-@ObjectType({ description: 'challenge' })
+@ObjectType()
 export class Challenge {
   @Field((type) => ID)
   id: string;
 
-  @Field()
+  @Field((type) => String)
   title: string;
 
-  @Field()
+  @Field((type) => String)
   description: string;
 
-  @Field()
+  @Field((type) => Date)
   createdAt: Date;
+
+  @Field((type) => Date)
+  updatedAt: Date;
 }

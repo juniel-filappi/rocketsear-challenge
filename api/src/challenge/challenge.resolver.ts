@@ -1,7 +1,8 @@
 import { Args, Resolver, Query, Mutation } from '@nestjs/graphql';
-import { Challenge } from './models/challenge.model';
+import { Challenge } from './challenge.model';
 import { ChallengeArgs } from './dto/challenge-args.dto';
 import { ChallengeService } from './challenge.service';
+import { CreateChallengeInput } from './dto/create-challenge.input';
 
 @Resolver((of) => Challenge)
 export class ChallengeResolver {
@@ -13,7 +14,9 @@ export class ChallengeResolver {
   }
 
   @Mutation((returns) => Challenge)
-  async createChallenge(@Args('title') title: string): Promise<Challenge> {
-    return this.service.createChallenge(title);
+  async createChallenge(
+    @Args('data') data: CreateChallengeInput,
+  ): Promise<Challenge> {
+    return this.service.createChallenge(data);
   }
 }
