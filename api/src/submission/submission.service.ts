@@ -73,10 +73,18 @@ export class SubmissionService implements OnModuleInit {
       },
     });
 
-    this.client.emit('challenge.correction', {
+    this.client.send('challenge.correction', {
       submissionId: submission.id,
       repositoryUrl: data.repositoryUrl,
-    });
+    }).subscribe((response) => {
+      this.prisma.submission.update({
+        where: { id: submission.id },
+        data: {
+          status: response.status,
+          note: response.grade,
+        },
+      });
+    })
 
     return submission;
   }
