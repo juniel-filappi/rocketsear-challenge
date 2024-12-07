@@ -2,7 +2,7 @@ import { ArgsType, Field, Int } from '@nestjs/graphql';
 import { Max, Min } from 'class-validator';
 
 @ArgsType()
-export class ChallengeArgs {
+export class SubmissionArgs {
   @Field((type) => Int)
   @Min(0)
   skip = 0;
@@ -13,8 +13,14 @@ export class ChallengeArgs {
   take = 25;
 
   @Field((type) => String, { nullable: true })
-  title?: string;
+  challengeId?: string;
 
   @Field((type) => String, { nullable: true })
-  description?: string;
+  status?: string;
+
+  @Field((type) => Date, { nullable: true })
+  startDate?: Date;
+
+  @Field((type) => Date, { nullable: true })
+  endDate?: Date;
 }

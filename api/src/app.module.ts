@@ -5,6 +5,7 @@ import { ChallengeModule } from './challenge/challenge.module';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from './env';
 import { PrismaModule } from './prisma/prisma.module';
+import { SubmissionModule } from './submission/submission.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PrismaModule } from './prisma/prisma.module';
     }),
     ChallengeModule,
     PrismaModule,
+    SubmissionModule,
   ],
   controllers: [],
   providers: [],

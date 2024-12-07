@@ -4,7 +4,7 @@ import { ChallengeService } from './challenge.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 import { Env } from '../env';
-import { PrismaModule } from "../prisma/prisma.module";
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [
